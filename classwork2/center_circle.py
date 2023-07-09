@@ -1,17 +1,22 @@
 import cv2 as cv
 import numpy as np
 
-img = cv.imread('classwork2/Circle Objects.png' , cv.IMREAD_GRAYSCALE)
+image = cv.imread("classwork2/Circle Objects.png", cv.IMREAD_GRAYSCALE)
 
+black_image = np.zeros_like(image)
 
-cv.circle(img, (0,0), 100, (0,255,0), -1)
-# output = cv.filter2D(img, -1, filter_motionblur)
+for row in range(image.shape[0]):
+    for col in range(image.shape[1]):
+        pixel = image[row, col]
+        if pixel > 230:
+            #print(pixel)
+            radius = 50  
+            cv.circle(black_image, (col, row), radius, (255, 255, 255),1 )
+            
 
-#cv.imwrite('filter/motion_output.png', output)
-cv.imshow('circle Image', img)
+cv.imshow("Circle", black_image)
 cv.waitKey(0)
 cv.destroyAllWindows()
-
 
 
 
