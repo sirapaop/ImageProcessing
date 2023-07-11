@@ -5,7 +5,7 @@ import numpy as np
 
 img = cv.imread("classwork3\salt&pepper_Image.jpg", cv.IMREAD_GRAYSCALE)
 
-denoised_image = cv.medianBlur(img, 3)  
+denoised_image = cv.medianBlur(img, 5)  
 
 #cv2.imwrite('output_image.png', denoised_image)
 

@@ -8,7 +8,7 @@ size = 20
 
 filter_motionblur = np.zeros((size, size))
 # vertical
-#filter_motionblur[:, int((size - 1)/2)] = np.ones(size) 
+filter_motionblur[:, int((size - 1)/2)] = np.ones(size) 
 
 #horicontal
 #filter_motionblur[int((size-1)/2), :] = np.ones(size)
@@ -17,8 +17,8 @@ filter_motionblur = np.zeros((size, size))
 #filter_motionblur = np.eye(20, dtype=np.float32) 
 
 #ทะแยงขวาไปซ้าย
-for i in range(size):
-  filter_motionblur[i, size - 1 - i] =  1  
+# for i in range(size):
+#   filter_motionblur[i, size - 1 - i] =  1  
 
 filter_motionblur = filter_motionblur / size
 print(filter_motionblur)
