@@ -4,6 +4,7 @@ import numpy as np
 img = cv.imread("./classwork4/paimon.jpg", cv.IMREAD_GRAYSCALE)
 img = cv.resize(img,(800,600))
 
+#sobel in freq
 filter_h = 3
 filter_w = 3
 filter = np.zeros([filter_h, filter_w], dtype = np.float32)
@@ -17,13 +18,16 @@ imgF = np.fft.fft2(img)
 
 conclusion = freq * imgF
 
+#inverse img
 conclusion_inverse = np.fft.ifft2(conclusion)
 output = np.real(conclusion_inverse)
 imgMag_conclusion = cv.normalize(output, None, 0, 255, cv.NORM_MINMAX, cv.CV_8U)
 
 
+#sobel in spacial
 sobelx = cv.Sobel(img, cv.CV_64F, 1, 0, ksize = 3)
 imgMag_sobelx = cv.normalize(sobelx, None, 0, 255, cv.NORM_MINMAX, cv.CV_8U)
+
 
 picture = cv.hconcat([imgMag_sobelx, imgMag_conclusion])
 cv.imshow("imgFreq x filterFreq", picture)
