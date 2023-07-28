@@ -4,7 +4,7 @@ import numpy as np
 img = cv.imread('filter/bot.jpg', cv.IMREAD_GRAYSCALE)
 img = cv.resize(img,(600,600))
 
-size = 20
+size = 12
 
 filter_motionblur = np.zeros((size, size))
 # vertical
@@ -24,7 +24,7 @@ filter_motionblur = filter_motionblur / size
 print(filter_motionblur)
 output = cv.filter2D(img, -1, filter_motionblur)
 
-#cv.imwrite('filter/motion_output.png', output)
+cv.imwrite('filter/motion_output.png', output)
 cv.imshow('Motion_Blur Image', output)
 cv.waitKey(0)
 cv.destroyAllWindows()
